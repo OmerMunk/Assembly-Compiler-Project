@@ -1,0 +1,22 @@
+this is line number 1
+this is line number 2
+macro m1
+are you ready?
+yes im ready
+endmacro
+this is line number 7
+macro bibi
+are you ready!!!!
+yes im ready!!!!
+endmacro
+this is line number 12
+this is line number 13
+m1
+this is line number 15
+this is line number 16
+bibi
+this is line number 18
+bibi
+this is line number 20
+m1
+this is line number 22
