@@ -1,0 +1,16 @@
+a
+b
+c
+d
+macro m1
+wow
+wow
+wow
+wowasdfas
+#@$%@$
+wow
+endmacro
+e
+f
+g
+h
