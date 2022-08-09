@@ -27,6 +27,11 @@ char *read_file(char *file_name) {
 
 //function that gets a string a checks if it has the sub-string 'macro'
 int is_macro(char *string, char *macro_name, char *macro_body, int position) {
+    //*************************************************************************************************************************
+//    macro_name = malloc(sizeof(char) * 200);
+//    macro_body = malloc(sizeof(char) * 1000);
+    //not sure about this
+    //*************************************************************************************************************************
     int i = position;
     while (string[i] != '\0') {
         if (string[i] == 'm') {
@@ -66,6 +71,7 @@ int is_macro(char *string, char *macro_name, char *macro_body, int position) {
         }
         i++;
     }
+    printf("%s", macro_name);
     return 0;
 }
 
@@ -112,6 +118,44 @@ char *get_string_without_macros(char *string) {
 
 //function that checks if a macro name is in substring, and replace it with the macro body
 //no need to check for the string 'macro', just the macro name
+
+
+// A function that counts the amount of a macro in a string
+int count_macro(char *string, char *macro_name) {
+    int i = 0;
+    int count = 0;
+    while (string[i] != '\0') {
+        if (string[i] == 'm') {
+            if (string[i + 1] == 'a') {
+                if (string[i + 2] == 'c') {
+                    if (string[i + 3] == 'r') {
+                        if (string[i + 4] == 'o') {
+                            if (string[i + 5] == ' ') {
+                                int j = 0;
+                                while (string[i + 6 + j] != '\n') {
+                                    if (string[i + 6 + j] == macro_name[j]) {
+                                        if (string[i + 6 + j + 1] == '\0') {
+                                            count++;
+                                            break;
+                                        }
+                                    } else {
+                                        break;
+                                    }
+                                    j++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        i++;
+    }
+    return count;
+}
+
+
+
 char *replace_macro(char *string, char *macro_name, char *macro_body) {
     char *string_without_macros = get_string_without_macros(string);
     char *string_with_macros = malloc(sizeof(char) * 1000);

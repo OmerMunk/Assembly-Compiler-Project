@@ -5,7 +5,7 @@
 #include "utils_omer1_header.h"
 
 
-//function to convert decimal to binary
+// A function to convert decimal to binary
 void dec_to_bin(int n, int *arr) {
     int i = 9;
     while (n > 0) {
@@ -15,6 +15,7 @@ void dec_to_bin(int n, int *arr) {
     }
 }
 
+// A function to print binary number
 void print_bin(int *arr) {
     int i;
     for (i = 0; i < 10; i++) {
@@ -22,17 +23,18 @@ void print_bin(int *arr) {
     }
 }
 
+// A function the converts binary number to decimal number
 int bin_to_dec(int length, int *arr) {
     int i = length-1;
     int sum = 0;
     while (i > -1) {
-//        printf("\nnumber right now is %d ,sum right now is: %d, i is %d, pow is %f\n", arr[i],sum, i, pow(2, length - (i + 1)));
         sum = sum + arr[i] * pow(2, length - (i + 1));
         i--;
     }
     return sum;
 }
 
+// A function that converts decimal number to base32 number
 void dec_to_base32(int decimal_num, char *arr) {
     int quotient, remainder, i;
     i = 0;
@@ -78,8 +80,8 @@ void dec_to_base32(int decimal_num, char *arr) {
     }
 }
 
-
-void base32_to_dec(int length, char *arr) {
+// A function that converts base32 number to decimal number
+int base32_to_dec(int length, char *arr) {
     int i = 0;
     int sum = 0;
     while (i < length) {
@@ -120,7 +122,7 @@ void base32_to_dec(int length, char *arr) {
         }
         i++;
     }
-    printf("%d", sum);
+    return sum;
 }
 
 
@@ -131,12 +133,16 @@ void print_base32(char *arr) {
     }
 }
 
+// A function that converts binary number to base32 number
 void bin_to_base32(int* bin_arr, char* base32_arr){
     int decimal;
     decimal = bin_to_dec(10, bin_arr);
     dec_to_base32(decimal, base32_arr);
 }
+\
 
+
+// A function that analyzes a word from binary representation into a word struct
 void analayze_word(int *word, struct word *word_struct) {
     /*
      * opcode - operation code
@@ -168,6 +174,7 @@ void analayze_word(int *word, struct word *word_struct) {
     word_struct->are = sum;
 }
 
+// A function that prints word struct
 void print_word_struct(struct word *word_struct) {
     printf("opcode: %d\n", word_struct->opcode);
     printf("soam: %d\n", word_struct->soam);

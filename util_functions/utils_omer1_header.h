@@ -23,3 +23,32 @@ enum commands {
     rts = 14,
     hlt = 15
 };
+
+char* reserved_names[] = {
+    "mov",
+    "cmp",
+    "add",
+    "sub",
+    "not",
+    "clr",
+    "lea",
+    "inc",
+    "dec",
+    "jmp",
+    "bne",
+    "get",
+    "prn",
+    "jsr",
+    "rts",
+    "hlt",
+    "r1",
+    "r2",
+    "r3",
+    "r4",
+    "r5",
+    "r6",
+    "r7",
+    "r8",
+};
+
+RESERVED_NAMES_COUNT = 24;

@@ -15,8 +15,15 @@ m1
 this is line number 15
 this is line number 16
 bibi
+macro kamakama
+pupa??
+pipi
+endmacro
 this is line number 18
 bibi
 this is line number 20
+kamakama
 m1
 this is line number 22
+kamakama
+kamakama
