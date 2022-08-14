@@ -13,14 +13,17 @@ register_struct r8;
 
 
 typedef struct address_struct {
-    char* address[10];
-    char* word[10]
+    int address;
+    char* label;
+    char word[10];
 
 } address_struct;
 
-typedef struct memory{
-    address_struct* address[255]
-}memory;
+//typedef struct memory{
+//    address_struct* cells[255];
+//}memory;
 
 
-memory computer_memory;
+address_struct computer_memory[255];
+
+int current_address;

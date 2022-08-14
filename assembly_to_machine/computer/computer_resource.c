@@ -4,7 +4,6 @@
 #include "computer_resource.h"
 
 
-
 void turn_on_computer() {
     r1.value = 0;
     r2.value = 0;
@@ -14,4 +13,28 @@ void turn_on_computer() {
     r6.value = 0;
     r7.value = 0;
     r8.value = 0;
+    current_address = 0;
+}
+
+int i;
+int j;
+
+void assign_word(char *word) {
+    for (i = 0; i < 10; i++) {
+        computer_memory[current_address].word[i] = word[i];
+    }
+}
+
+void assign_to_memory(char *word) {
+    if (current_address > 255) {
+        printf("Memory is full");
+        return;
+    }
+    computer_memory[current_address].address = current_address;
+    assign_word(word);
+    current_address++;
+};
+
+void print_address_content(int address) {
+    printf("\nThe content of address %d is: %s", address, computer_memory[address].word);
 }

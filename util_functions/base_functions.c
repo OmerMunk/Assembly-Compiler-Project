@@ -2,12 +2,45 @@
 // Created by Omer Munk on 18/07/2022.
 //
 #include <math.h>
-#include "utils_omer1_header.h"
+
+
+int is_letter(char c) {
+    if (c >= 'a' && c <= 'z') {
+        return 1;
+    } else if (c >= 'A' && c <= 'Z') {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int is_valid_digit(char c) {
+    if (c >= '1' && c <= '9') {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+
+// A function that returns the index of the char '.' in a string
+int find_dot(char *string) {
+    i = 0;
+    while (string[i] != '\0') {
+        if (string[i] == '.') {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
+
+char *after_dot;
 
 
 // A function to convert decimal to binary
 void dec_to_bin(int n, int *arr) {
-    int i = 9;
+    i = 9;
     while (n > 0) {
         arr[i] = n % 2;
         n = n / 2;
@@ -15,9 +48,10 @@ void dec_to_bin(int n, int *arr) {
     }
 }
 
+
+
 // A function to print binary number
 void print_bin(int *arr) {
-    int i;
     for (i = 0; i < 10; i++) {
         printf("%d", arr[i]);
     }
@@ -25,7 +59,7 @@ void print_bin(int *arr) {
 
 // A function the converts binary number to decimal number
 int bin_to_dec(int length, int *arr) {
-    int i = length-1;
+    i = length - 1;
     int sum = 0;
     while (i > -1) {
         sum = sum + arr[i] * pow(2, length - (i + 1));
@@ -36,7 +70,7 @@ int bin_to_dec(int length, int *arr) {
 
 // A function that converts decimal number to base32 number
 void dec_to_base32(int decimal_num, char *arr) {
-    int quotient, remainder, i;
+    int quotient, remainder;
     i = 0;
     quotient = decimal_num;
     while (quotient != 0) {
@@ -73,7 +107,7 @@ void dec_to_base32(int decimal_num, char *arr) {
                 arr[i++] = '>'; //62
                 break;
             default:
-                arr[i++] = (char)(remainder + 87);
+                arr[i++] = (char) (remainder + 87);
                 break;
         }
         quotient = quotient / 32;
@@ -82,42 +116,42 @@ void dec_to_base32(int decimal_num, char *arr) {
 
 // A function that converts base32 number to decimal number
 int base32_to_dec(int length, char *arr) {
-    int i = 0;
+    i = 0;
     int sum = 0;
     while (i < length) {
         switch (arr[i]) {
             case '!':
-                sum = sum + 0 * pow(32, i);
+                sum = sum + 0 * (int)pow(32, i);
                 break;
             case '@':
-                sum = sum + 1 * pow(32, i);
+                sum = sum + 1 * (int)pow(32, i);
                 break;
             case '#':
-                sum = sum + 2 * pow(32, i);
+                sum = sum + 2 * (int)pow(32, i);
                 break;
             case '$':
-                sum = sum + 3 * pow(32, i);
+                sum = sum + 3 * (int)pow(32, i);
                 break;
             case '%':
-                sum = sum + 4 * pow(32, i);
+                sum = sum + 4 * (int)pow(32, i);
                 break;
             case '^':
-                sum = sum + 5 * pow(32, i);
+                sum = sum + 5 * (int)pow(32, i);
                 break;
             case '&':
-                sum = sum + 6 * pow(32, i);
+                sum = sum + 6 * (int)pow(32, i);
                 break;
             case '*':
-                sum = sum + 7 * pow(32, i);
+                sum = sum + 7 * (int)pow(32, i);
                 break;
             case '<':
-                sum = sum + 8 * pow(32, i);
+                sum = sum + 8 * (int)pow(32, i);
                 break;
             case '>':
-                sum = sum + 9 * pow(32, i);
+                sum = sum + 9 * (int)pow(32, i);
                 break;
             default:
-                sum = sum + (arr[i] - 87) * pow(32, i);
+                sum = sum + (arr[i] - 87) * (int)pow(32, i);
                 break;
         }
         i++;
@@ -127,52 +161,68 @@ int base32_to_dec(int length, char *arr) {
 
 
 void print_base32(char *arr) {
-    int i;
     for (i = 1; i > -1; i--) {
         printf("%c", arr[i]);
     }
 }
 
 // A function that converts binary number to base32 number
-void bin_to_base32(int* bin_arr, char* base32_arr){
+void bin_to_base32(int *bin_arr, char *base32_arr) {
     int decimal;
     decimal = bin_to_dec(10, bin_arr);
     dec_to_base32(decimal, base32_arr);
 }
+
 \
 
 
 // A function that analyzes a word from binary representation into a word struct
-void analayze_word(int *word, struct word *word_struct) {
+void binary_to_word(int *word, struct word *word_struct) {
     /*
      * opcode - operation code
      *  soam - source operand addressing method
      *  doam - destination operand addressing method
      *  are - codec type
      * */
-    int i,j, sum;
+    int j, sum;
 
     sum = 0;
-    for (i = 3, j=0; i > -1; i--, j++) {
-        sum = sum + word[i] * pow(2, j);
+    for (i = 3, j = 0; i > -1; i--, j++) {
+        sum = sum + word[i] * (int)pow(2, j);
     }
     word_struct->opcode = sum;
     sum = 0;
-    for (i = 5, j=0; i > 3; i--, j++) {
-        sum = sum + word[i] * pow(2, j);
+    for (i = 5, j = 0; i > 3; i--, j++) {
+        sum = sum + word[i] * (int)pow(2, j);
     }
     word_struct->soam = sum;
     sum = 0;
-    for (i = 7, j=0; i > 5; i--, j++) {
-        sum = sum + word[i] * pow(2, j);
+    for (i = 7, j = 0; i > 5; i--, j++) {
+        sum = sum + word[i] * (int)pow(2, j);
     }
     word_struct->doam = sum;
     sum = 0;
-    for (i = 9, j=0; i > 7; i--, j++) {
-        sum = sum + word[i] * pow(2, j);
+    for (i = 9, j = 0; i > 7; i--, j++) {
+        sum = sum + word[i] * (int)pow(2, j);
     }
     word_struct->are = sum;
 }
+
+char *substring(char *string, int position, int length) {
+    char *pointer = malloc(length + 1);
+    memcpy(pointer, string + position, length);
+    pointer[length] = '\0';
+    return pointer;
+}
+
+
+
+
+
+
+
+
+
 
 // A function that prints word struct
 void print_word_struct(struct word *word_struct) {

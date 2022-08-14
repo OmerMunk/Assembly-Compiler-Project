@@ -24,6 +24,15 @@ enum commands {
     hlt = 15
 };
 
+
+enum addressing_methods{
+    immediate = 0,
+    direct = 1,
+    indirect_indexed = 2,
+    register_direct = 3,
+    future_possible_label = 4
+};
+
 char* reserved_names[] = {
     "mov",
     "cmp",
@@ -51,4 +60,4 @@ char* reserved_names[] = {
     "r8",
 };
 
-RESERVED_NAMES_COUNT = 24;
+int RESERVED_NAMES_COUNT = 24;

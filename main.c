@@ -1,19 +1,33 @@
 #include <stdio.h>
-#include "util_functions/base_functions.c"
-#include "headers/types.h"
-#include "source_to_assembly//pre-assembler/pre_assembler.c"
-#include "assembly_to_machine/computer/computer_resource.c"
-#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include "headers/types.h"
+#include "util_functions/utils_omer1_header.h"
+#include "util_functions/command_functions.h"
+
+#include "source_to_assembly//pre-assembler/pre_assembler.c"
+#include "assembly_to_machine/computer/computer_resource.c"
 #include "assembly_to_machine/operations/commands.c"
 #include "labels/labels.c"
+#include "util_functions/base_functions.c"
+#include "util_functions/addressing_functions.c"
+
+#include "util_functions/command_functions.c"
 #include "source_to_assembly/analayzers.c"
+
+
+
+
 
 //#include "util_functions/utils_omer1_header.h"
 //#include "./pre-assembler/pre_assembler.h"
 
 char x;
+
+//substring function
+
 
 
 //pointer to a function
@@ -45,7 +59,7 @@ int main() {
         base32_to_dec(2, arr3);
         int arr4[10] = {1, 1, 0, 0, 0, 1, 1, 0, 0, 1};
         struct word word1;
-        analayze_word(arr4, &word1);
+        binary_to_word(arr4, &word1);
         print_word_struct(&word1);
         int arr7[10] = {1, 0, 1, 1, 0, 1, 1, 0, 1, 1};
         char arr8[2] = {'!', '!'};
@@ -182,6 +196,11 @@ int main() {
         printf("\nr1 is not available");
     }
 
+    assign_to_memory("1111100000");
+    assign_to_memory("0000011111");
+    print_address_content(2);
+    print_address_content(1);
+    print_address_content(0);
 
 
 
