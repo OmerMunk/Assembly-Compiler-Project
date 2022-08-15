@@ -3,7 +3,7 @@ typedef struct word {
     int soam;
     int doam;
     int are;
-} word ;
+} word;
 
 enum commands {
     mov = 0,
@@ -24,8 +24,13 @@ enum commands {
     hlt = 15
 };
 
+enum operand_type {
+    source_operand = 2,
+    destination_operand = 3
+};
 
-enum addressing_methods{
+
+enum addressing_methods {
     immediate = 0,
     direct = 1,
     indirect_indexed = 2,
@@ -33,31 +38,31 @@ enum addressing_methods{
     future_possible_label = 4
 };
 
-char* reserved_names[] = {
-    "mov",
-    "cmp",
-    "add",
-    "sub",
-    "not",
-    "clr",
-    "lea",
-    "inc",
-    "dec",
-    "jmp",
-    "bne",
-    "get",
-    "prn",
-    "jsr",
-    "rts",
-    "hlt",
-    "r1",
-    "r2",
-    "r3",
-    "r4",
-    "r5",
-    "r6",
-    "r7",
-    "r8",
+char *reserved_names[] = {
+        "mov",
+        "cmp",
+        "add",
+        "sub",
+        "not",
+        "clr",
+        "lea",
+        "inc",
+        "dec",
+        "jmp",
+        "bne",
+        "get",
+        "prn",
+        "jsr",
+        "rts",
+        "hlt",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
 };
 
 int RESERVED_NAMES_COUNT = 24;

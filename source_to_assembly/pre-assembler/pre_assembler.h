@@ -1,7 +1,7 @@
 
 
 typedef struct macro_struct {
-    char name[100];
+    char name[74];
     char body[1000];
 } macro_struct;
 

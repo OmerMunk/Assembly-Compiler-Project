@@ -21,6 +21,8 @@ char *sub_word;
 
 int word_type;
 
+int iteration;
+
 int determine_sub_word(char *given_sub_word) {
     // check if a string ends with ':', less then 31 chars, and starts with a letter
     if (given_sub_word[strlen(given_sub_word) - 1] == ':' &&
@@ -174,7 +176,8 @@ int operands_handler(char *word, int *binary_word){
             while (word[j] != '\0' && word[j] != ' ') {
                 j++;
             }
-            determine_operand_addressing_method(substring(word, i, j - i));
+            //todo: more arguments!!!
+//            determine_operand_addressing_method(substring(word, i, j - i), iteration);
             return 2;
         case 2:
             return 3;
@@ -203,8 +206,9 @@ int string_to_binary(char *word, int *binary_word) {
             return 1;
         case empty_word:
             return 1;
-        case order_word:
-            return order_handling(word, binary_word);
+            //todo:
+//        case order_word:
+//            return order_handling(word, binary_word);
         case instruction_word:
             return operands_handler(word, binary_word);
         default:

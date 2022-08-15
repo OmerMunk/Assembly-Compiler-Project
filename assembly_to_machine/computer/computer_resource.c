@@ -13,8 +13,11 @@ void turn_on_computer() {
     r6.value = 0;
     r7.value = 0;
     r8.value = 0;
-    current_address = 0;
+    current_address = FIRST_ADDRESS;
+    IC = 0;
+    DC = 0;
 }
+
 
 int i;
 int j;
@@ -27,6 +30,7 @@ void assign_word(char *word) {
 
 void assign_to_memory(char *word) {
     if (current_address > 255) {
+        //todo: add error handling
         printf("Memory is full");
         return;
     }

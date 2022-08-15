@@ -30,7 +30,6 @@ void print_label(int num){
 }
 
 int check_if_label_name_available(char *name){
-    int i = 0;
 
     for (i = 0 ; i < RESERVED_NAMES_COUNT ; i++){
         if (strcmp(name, reserved_names[i]) == 0){

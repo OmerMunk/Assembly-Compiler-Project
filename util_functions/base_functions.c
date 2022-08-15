@@ -4,6 +4,23 @@
 #include <math.h>
 
 
+
+// A function that writes a string to a file
+void write_file(char *file_name, char *string) {
+    //print the parameters that the function got
+    printf("\nThe file name to write is: %s\n", file_name);
+    FILE *ptr1;
+    ptr1 = fopen(file_name, "w");
+    if (ptr1 == NULL) {
+        printf("Error opening file!\n");
+        exit(1);
+    }
+    fprintf(ptr1, "%s", string);
+    fclose(ptr1);
+    printf("File written successfully!\n");
+}
+
+
 int is_letter(char c) {
     if (c >= 'a' && c <= 'z') {
         return 1;
@@ -38,16 +55,40 @@ int find_dot(char *string) {
 char *after_dot;
 
 
-// A function to convert decimal to binary
-void dec_to_bin(int n, int *arr) {
+// A function to convert decimal to binary, if the decimal number is negative, use two's complement
+void dec_to_bin_negative(int n, int *arr) {
     i = 9;
     while (n > 0) {
         arr[i] = n % 2;
         n = n / 2;
         i--;
     }
+    i = 0;
+    while (i < 9) {
+        if (arr[i] == 0) {
+            arr[i] = 1;
+        } else {
+            arr[i] = 0;
+        }
+        i++;
+    }
 }
 
+
+// A function to convert decimal to binary
+void dec_to_bin(int n, int *arr) {
+    if (n < 0) {
+        dec_to_bin_negative(n, arr);
+    } else {
+        i = 9;
+        while (n > 0) {
+            arr[i] = n % 2;
+            n = n / 2;
+            i--;
+        }
+
+    }
+}
 
 
 // A function to print binary number
@@ -56,6 +97,9 @@ void print_bin(int *arr) {
         printf("%d", arr[i]);
     }
 }
+
+
+//todo: add a function that converts binary negative to decimal, the leftmost bit is the sign,
 
 // A function the converts binary number to decimal number
 int bin_to_dec(int length, int *arr) {
@@ -121,37 +165,37 @@ int base32_to_dec(int length, char *arr) {
     while (i < length) {
         switch (arr[i]) {
             case '!':
-                sum = sum + 0 * (int)pow(32, i);
+                sum = sum + 0 * (int) pow(32, i);
                 break;
             case '@':
-                sum = sum + 1 * (int)pow(32, i);
+                sum = sum + 1 * (int) pow(32, i);
                 break;
             case '#':
-                sum = sum + 2 * (int)pow(32, i);
+                sum = sum + 2 * (int) pow(32, i);
                 break;
             case '$':
-                sum = sum + 3 * (int)pow(32, i);
+                sum = sum + 3 * (int) pow(32, i);
                 break;
             case '%':
-                sum = sum + 4 * (int)pow(32, i);
+                sum = sum + 4 * (int) pow(32, i);
                 break;
             case '^':
-                sum = sum + 5 * (int)pow(32, i);
+                sum = sum + 5 * (int) pow(32, i);
                 break;
             case '&':
-                sum = sum + 6 * (int)pow(32, i);
+                sum = sum + 6 * (int) pow(32, i);
                 break;
             case '*':
-                sum = sum + 7 * (int)pow(32, i);
+                sum = sum + 7 * (int) pow(32, i);
                 break;
             case '<':
-                sum = sum + 8 * (int)pow(32, i);
+                sum = sum + 8 * (int) pow(32, i);
                 break;
             case '>':
-                sum = sum + 9 * (int)pow(32, i);
+                sum = sum + 9 * (int) pow(32, i);
                 break;
             default:
-                sum = sum + (arr[i] - 87) * (int)pow(32, i);
+                sum = sum + (arr[i] - 87) * (int) pow(32, i);
                 break;
         }
         i++;
@@ -188,22 +232,22 @@ void binary_to_word(int *word, struct word *word_struct) {
 
     sum = 0;
     for (i = 3, j = 0; i > -1; i--, j++) {
-        sum = sum + word[i] * (int)pow(2, j);
+        sum = sum + word[i] * (int) pow(2, j);
     }
     word_struct->opcode = sum;
     sum = 0;
     for (i = 5, j = 0; i > 3; i--, j++) {
-        sum = sum + word[i] * (int)pow(2, j);
+        sum = sum + word[i] * (int) pow(2, j);
     }
     word_struct->soam = sum;
     sum = 0;
     for (i = 7, j = 0; i > 5; i--, j++) {
-        sum = sum + word[i] * (int)pow(2, j);
+        sum = sum + word[i] * (int) pow(2, j);
     }
     word_struct->doam = sum;
     sum = 0;
     for (i = 9, j = 0; i > 7; i--, j++) {
-        sum = sum + word[i] * (int)pow(2, j);
+        sum = sum + word[i] * (int) pow(2, j);
     }
     word_struct->are = sum;
 }
@@ -214,14 +258,6 @@ char *substring(char *string, int position, int length) {
     pointer[length] = '\0';
     return pointer;
 }
-
-
-
-
-
-
-
-
 
 
 // A function that prints word struct

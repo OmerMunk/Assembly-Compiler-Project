@@ -16,6 +16,7 @@
 
 #include "util_functions/command_functions.c"
 #include "source_to_assembly/analayzers.c"
+#include "source_to_assembly/pre-assembler/from_source_to_after_macro.c"
 
 
 
@@ -74,73 +75,8 @@ int main() {
     }
 
 
+    char* after_macro_span = span_macros(read_file("../source_code2.txt"), "../source_code2");
 
-//    char* file_string1 = read_file("../hello.txt");
-//    char* file_string4 = read_file("../hello2.txt");
-//    char* file_string3 = read_file("../hello.txt");
-//    char* file_string2 = read_file("../hello3.txt");
-//    char* file_string2 = read_file("../text4.txt");
-    char *file_string = read_file("../source_code2.txt");
-
-    printf("\nThe File String is:\n\n%s", file_string);
-
-    macro_struct (*macro_struct_ptr) = malloc(sizeof(macro_struct));
-
-//    char *macro_name1;
-//    macro_name1 = malloc(sizeof(char) * 200);
-//    char *macro_body1;
-//    macro_body1 = malloc(sizeof(char) * 200);
-//    char *macro_name2;
-//    macro_name2 = malloc(sizeof(char) * 200);
-//    char *macro_body2;
-//    macro_body2 = malloc(sizeof(char) * 200);
-
-    printf("\nLINE 78\n");
-
-//    int next_position = is_macro(file_string, macro_name1, macro_body1, 0);
-    int next_position = is_macro(file_string, macro_struct_ptr[0].name, macro_struct_ptr[0].body, 0);
-
-
-
-//    is_macro(file_string, macro_name2, macro_body2, next_position);
-    printf("\nLINE 86\n");
-
-    int i = 1;
-    while (next_position != 0) {
-        next_position = is_macro(file_string, macro_struct_ptr[i].name, macro_struct_ptr[i].body, next_position);
-        i++;
-    }
-    printf("\nLINE 93\n");
-
-    char *result = (get_string_without_macros(file_string));
-
-    printf("\n\n\nThe Result is:\n\n%s", result);
-
-    char *ongoing_string = result;
-//    ongoing_string = replace_macro(result, macro_name1, macro_body1);
-//    ongoing_string = replace_macro(ongoing_string, macro_name1, macro_body1);
-//    ongoing_string = replace_macro(ongoing_string, macro_name2, macro_body2);
-//    ongoing_string = replace_macro(ongoing_string, macro_name2, macro_body2);
-    printf("\nLINE 109\n");
-    printf("%s", macro_struct_ptr[0].name);
-    printf("\nLINE 110\n");
-    ongoing_string = replace_macro(result, macro_struct_ptr[0].name, macro_struct_ptr[0].body);
-    printf("\nLINE 111\n");
-    int j = 1;
-    int k;
-    int count = 0;
-    while (j < i){
-        printf("\nLINE 114\n");
-        count = count_macro(ongoing_string, macro_struct_ptr[j].name);
-        k = 0;
-        printf("\nLINE 115\n");
-        while (k <= count){
-            ongoing_string = replace_macro(ongoing_string, macro_struct_ptr[j].name, macro_struct_ptr[j].body);
-            k++;
-        }
-        j++;
-    }
-    printf("\n\n\n\n\nfinal result:\n\n%s", ongoing_string);
 
 
 
@@ -156,6 +92,8 @@ int main() {
 //    printf("%s", replace_macro("omg this is so great", "so", "1234"));
     printf("\nDONE");
     turn_on_computer();
+    iteration = 1;
+    //todo: where to ++ this ^^ ?
     r1.value = 1;
     printf("\n%d", r1.value);
     printf("\n%p", &r1);
