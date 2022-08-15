@@ -1,5 +1,6 @@
 typedef struct register_struct {
-    unsigned int value : 10;
+//    unsigned int value : 10;
+    int value;
 } register_struct;
 
 

@@ -8,7 +8,7 @@ void fileHandler(char *arg)
     /* sets the fileName to be arg */
     strncpy(fileName, arg, strlen(arg));
     /* Change the file suffix to .as - before manipulation */
-    strcat(fileName, ".as")
+    strcat(fileName, ".as");
     /* Validate the file is properly opened */
     if ((source = fopen(fileName, "r")) == NULL)
     {

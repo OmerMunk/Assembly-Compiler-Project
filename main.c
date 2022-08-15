@@ -17,6 +17,8 @@
 #include "util_functions/command_functions.c"
 #include "source_to_assembly/analayzers.c"
 #include "source_to_assembly/pre-assembler/from_source_to_after_macro.c"
+#include "source_to_assembly/file_handler.c"
+#include "source_to_assembly/source_files_parser.c"
 
 
 
@@ -75,7 +77,10 @@ int main() {
     }
 
 
-    char* after_macro_span = span_macros(read_file("../source_code2.txt"), "../source_code2");
+    if(flag) {
+
+
+        char *after_macro_span = span_macros(read_file("../source_code2.txt"), "../source_code2");
 
 
 
@@ -90,55 +95,54 @@ int main() {
 //    printf("\nThe macro body is:\n");
 //    printf("%s", macro_struct1.body);
 //    printf("%s", replace_macro("omg this is so great", "so", "1234"));
-    printf("\nDONE");
-    turn_on_computer();
-    iteration = 1;
-    //todo: where to ++ this ^^ ?
-    r1.value = 1;
-    printf("\n%d", r1.value);
-    printf("\n%p", &r1);
-    printf("\n%d", r2.value);
-    printf("\n%p", &r2);
+        printf("\nDONE");
+        turn_on_computer();
+        iteration = 1;
+        //todo: where to ++ this ^^ ?
+        r1.value = 1;
+        printf("\n%d", r1.value);
+        printf("\n%p", &r1);
+        printf("\n%d", r2.value);
+        printf("\n%p", &r2);
 
 
-    int a = 7;
-    r1.value = 12;
-    printf("\nThe address of a is : %p", &a);
-    printf("\nThe address of a is : %d", (int)&a);
-    printf("\nThe value of r1 is: %d", r1.value);
-    load_effective_address(&a, &r1.value);
-    printf("\nThe value of r1 is: %d", r1.value);
-    printf("\nThe value of r1 is: %p", (void*)r1.value);
-    int b = 992;
-    swap_bits(&b);
-    printf("\n%d", b);
-    printf("\nThe value of r1 is: %d", r1.value);
-    clear(&r1.value);
-    printf("\nThe value of r1 is: %d", r1.value);
+        int a = 7;
+        r1.value = 12;
+        printf("\nThe address of a is : %p", &a);
+        printf("\nThe address of a is : %d", (int) &a);
+        printf("\nThe value of r1 is: %d", r1.value);
+        load_effective_address(&a, &r1.value);
+        printf("\nThe value of r1 is: %d", r1.value);
+        printf("\nThe value of r1 is: %p", (void *) r1.value);
+        int b = 992;
+        swap_bits(&b);
+        printf("\n%d", b);
+        printf("\nThe value of r1 is: %d", r1.value);
+        clear(&r1.value);
+        printf("\nThe value of r1 is: %d", r1.value);
 //    get_input(&r1.value);
-    printf("\nThe value of r1 is: %d", r1.value);
-    print_char(&r1.value);
+        printf("\nThe value of r1 is: %d", r1.value);
+        print_char(&r1.value);
 //    exit_program();
-    printf("\nwow\n");
-    char* sub = "kaka";
-    init_labels();
-    add_label(sub, 123);
-    add_label("ari", 129);
-    print_label(0);
-    print_label(1);
-    print_label(2);
-    if(check_if_label_name_available("r1")){
-        printf("\nr1 is available");
-    }
-    else{
-        printf("\nr1 is not available");
-    }
+        printf("\nwow\n");
+        char *sub = "kaka";
+        init_labels();
+        add_label(sub, 123);
+        add_label("ari", 129);
+        print_label(0);
+        print_label(1);
+        print_label(2);
+        if (check_if_label_name_available("r1")) {
+            printf("\nr1 is available");
+        } else {
+            printf("\nr1 is not available");
+        }
 
-    assign_to_memory("1111100000");
-    assign_to_memory("0000011111");
-    print_address_content(2);
-    print_address_content(1);
-    print_address_content(0);
+        assign_to_memory("1111100000");
+        assign_to_memory("0000011111");
+        print_address_content(2);
+        print_address_content(1);
+        print_address_content(0);
 
 
 
@@ -147,5 +151,13 @@ int main() {
 
 
 
+        return 0;
+    }
+    sourceFilesParser("../source_code","../source_code4");
+    printf("hello world kaka");
     return 0;
+
+
+
+
 }
