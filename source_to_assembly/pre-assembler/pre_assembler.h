@@ -6,6 +6,6 @@ typedef struct macro_struct {
 } macro_struct;
 
 
-//typedef struct of macro_struct with char array with 10 bytes
+/* typedef struct of macro_struct with char array with 10 bytes */
 
 

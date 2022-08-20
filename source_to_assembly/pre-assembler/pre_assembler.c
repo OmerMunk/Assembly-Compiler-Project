@@ -28,6 +28,7 @@ int is_macro(char *string, char *macro_name, char *macro_body, int position) {
 /*   macro_name = malloc(sizeof(char) * 200); */
 /*    macro_body = malloc(sizeof(char) * 1000); */
     /* ************************************************************************************************************************ */
+    int k;
     int i = position;
     while (string[i] != '\0') {
         if (string[i] == 'm') {
@@ -42,7 +43,7 @@ int is_macro(char *string, char *macro_name, char *macro_body, int position) {
                                     j++;
                                 }
                                 macro_name[j] = '\0';
-                                int k = 0;
+                                k = 0;
                                 while (string[i + 6 + j + k] != '\0') {
                                     if (string[i + 6 + j + k] == 'e' &&
                                         string[i + 7 + j + k] == 'n' &&
