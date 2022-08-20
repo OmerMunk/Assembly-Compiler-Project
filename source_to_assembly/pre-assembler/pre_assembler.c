@@ -1,13 +1,10 @@
-//
-// Created by Omer Munk on 22/07/2022.
-//
 #include <stdlib.h>
 #include <string.h>
 #include "pre_assembler.h"
 
 FILE *ptr;
 
-// function that reads a file and returns a string of the file
+/* function that reads a file and returns a string of the file */
 char *read_file(char *file_name) {
     char *line_string = malloc(sizeof(char) * 200);
     char *file_string = malloc(sizeof(char) * 1000);
@@ -25,13 +22,12 @@ char *read_file(char *file_name) {
 }
 
 
-//function that gets a string a checks if it has the sub-string 'macro'
+/* function that gets a string a checks if it has the sub-string 'macro' */
 int is_macro(char *string, char *macro_name, char *macro_body, int position) {
-    //*************************************************************************************************************************
-//    macro_name = malloc(sizeof(char) * 200);
-//    macro_body = malloc(sizeof(char) * 1000);
-    //not sure about this
-    //*************************************************************************************************************************
+    /* *********************************************************************************************************************** */
+/*   macro_name = malloc(sizeof(char) * 200); */
+/*    macro_body = malloc(sizeof(char) * 1000); */
+    /* ************************************************************************************************************************ */
     int i = position;
     while (string[i] != '\0') {
         if (string[i] == 'm') {
@@ -62,7 +58,7 @@ int is_macro(char *string, char *macro_name, char *macro_body, int position) {
                                     k++;
                                 }
                                 macro_body[k] = '\0';
-                                return i+12+j+k; //the position of the end of the macro, so the next execution will start from here
+                                return i+12+j+k; /* the position of the end of the macro, so the next execution will start from here */
                             }
                         }
                     }
@@ -75,7 +71,7 @@ int is_macro(char *string, char *macro_name, char *macro_body, int position) {
     return 0;
 }
 
-//function that gets a string and returns a sub-string without the definition of macros
+/* function that gets a string and returns a sub-string without the definition of macros */
 char *get_string_without_macros(char *string) {
     char *string_without_macros = malloc(sizeof(char) * 1000);
     int i = 0;
@@ -116,11 +112,11 @@ char *get_string_without_macros(char *string) {
     return string_without_macros;
 }
 
-//function that checks if a macro name is in substring, and replace it with the macro body
-//no need to check for the string 'macro', just the macro name
+/* function that checks if a macro name is in substring, and replace it with the macro body */
+/* no need to check for the string 'macro', just the macro name */
 
 
-// A function that counts the amount of a macro in a string
+/* A function that counts the amount of a macro in a string */
 int count_macro(char *string, char *macro_name) {
     int i = 0;
     int count = 0;
