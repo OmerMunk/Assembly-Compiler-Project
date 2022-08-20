@@ -4,6 +4,10 @@
 int sourceFilesParser(char *file1, char *file2)
 //int sourceFilesParser(int argc, char *argv[])
 {
+//    printf("NOTICE %s",file1);
+//    printf("NOTICE %s",file2);
+//    printf("NOTICE %p",*file2);
+
     int argc=2; // can be deleted in Ubuntu ver
     int fileCounter = argc - 1;
     int fileIterator = 1;

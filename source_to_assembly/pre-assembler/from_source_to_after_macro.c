@@ -9,6 +9,7 @@ char *span_macros(char *string, char *source_file_name) {
 //    char* file_string2 = read_file("../hello3.txt");
 //    char* file_string2 = read_file("../text4.txt");
 //    char *file_string = read_file("../source_code2.txt");
+    printf("char *string represents content, hence: %s.\n char * source_file_name represents file name, hence %s",string,source_file_name);
     char *file_string = string;
     printf("\nThe File String is:\n\n%s", file_string);
     macro_struct (*macro_struct_ptr) = malloc(sizeof(macro_struct));

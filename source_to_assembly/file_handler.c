@@ -7,17 +7,17 @@ void fileHandler(char *arg)
     char *fileName = (char*) malloc(strlen(arg)+1 * sizeof(char));
     /* sets the fileName to be arg */
     strncpy(fileName, arg, strlen(arg));
-    /* Change the file suffix to .as - before manipulation */
-    strcat(fileName, ".as");
-    /* Validate the file is properly opened */
+//    /* Change the file suffix to .as - before manipulation */
+//    strcat(fileName, ".as");
+//    /* Validate the file is properly opened */
     if ((source = fopen(fileName, "r")) == NULL)
     {
         fprintf(stderr, "ERROR! file %s failed to open\n", fileName);
         free(fileName);
         return;
     }
-    /* Change filename to .am suffix  */
-    fileName[strlen(fileName) - 1] = 'm';
+//    /* Change filename to .am suffix  */
+//    fileName[strlen(fileName) - 1] = 'm';
     if ((destination = fopen(fileName, "w+")) == NULL)
     {
 
@@ -28,6 +28,7 @@ void fileHandler(char *arg)
     }
     else
     {
+        span_macros(read_file(fileName), fileName);
         /* Deploy Macros, call pre-assembler */
 
         /* First Iteration */

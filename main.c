@@ -154,7 +154,7 @@ int main() {
         return 0;
     }
     sourceFilesParser("../source_code","../source_code4");
-    printf("hello world kaka");
+    printf("hello world from main with source_code & source_code4");
     return 0;
 
 
