@@ -15,10 +15,11 @@ char *span_macros(char *string, char *source_file_name) {
     char *result = NULL;
     char *ongoing_string = NULL;
     char *new_string = NULL;
+    char *file_string = NULL;
     /* new string that starts with 'source_file_name' and ends with 'am' extension */
     *new_string = malloc(sizeof(char) * 1000);
     printf("char *string represents content, hence: %s.\n char * source_file_name represents file name, hence %s",string,source_file_name);
-    char *file_string = string;
+    *file_string = string;
     printf("\nThe File String is:\n\n%s", file_string);
     macro_struct (*macro_struct_ptr) = malloc(sizeof(macro_struct));
     int next_position = is_macro(file_string, macro_struct_ptr[0].name, macro_struct_ptr[0].body, 0);
