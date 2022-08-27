@@ -1,7 +1,5 @@
-//
-// Created by Omer Munk on 14/08/2022.
-//
-
+#include <stdlib.h>
+#include <string.h>
 char *span_macros(char *string, char *source_file_name) {
     //    char* file_string1 = read_file("../hello.txt");
 //    char* file_string4 = read_file("../hello2.txt");
@@ -9,6 +7,7 @@ char *span_macros(char *string, char *source_file_name) {
 //    char* file_string2 = read_file("../hello3.txt");
 //    char* file_string2 = read_file("../text4.txt");
 //    char *file_string = read_file("../source_code2.txt");
+    int k;
     printf("char *string represents content, hence: %s.\n char * source_file_name represents file name, hence %s",string,source_file_name);
     char *file_string = string;
     printf("\nThe File String is:\n\n%s", file_string);
@@ -25,7 +24,6 @@ char *span_macros(char *string, char *source_file_name) {
     printf("%s", macro_struct_ptr[0].name);
     ongoing_string = replace_macro(result, macro_struct_ptr[0].name, macro_struct_ptr[0].body);
     j = 1;
-    int k;
     int count = 0;
     while (j < i) {
         count = count_macro(ongoing_string, macro_struct_ptr[j].name);
