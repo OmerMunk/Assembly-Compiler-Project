@@ -1,13 +1,15 @@
 #include <stdlib.h>
 #include <string.h>
 char *span_macros(char *string, char *source_file_name) {
-    //    char* file_string1 = read_file("../hello.txt");
-//    char* file_string4 = read_file("../hello2.txt");
-//    char* file_string3 = read_file("../hello.txt");
-//    char* file_string2 = read_file("../hello3.txt");
-//    char* file_string2 = read_file("../text4.txt");
-//    char *file_string = read_file("../source_code2.txt");
+/*    char* file_string1 = read_file("../hello.txt"); */
+/*    char* file_string4 = read_file("../hello2.txt"); */
+/*    char* file_string3 = read_file("../hello.txt"); */
+/*    char* file_string2 = read_file("../hello3.txt"); */
+/*    char* file_string2 = read_file("../text4.txt"); */
+/*    char *file_string = read_file("../source_code2.txt"); */
     int k;
+    /* new string that starts with 'source_file_name' and ends with 'am' extension */
+    char *new_string = malloc(sizeof(char) * 1000);
     printf("char *string represents content, hence: %s.\n char * source_file_name represents file name, hence %s",string,source_file_name);
     char *file_string = string;
     printf("\nThe File String is:\n\n%s", file_string);
@@ -36,9 +38,8 @@ char *span_macros(char *string, char *source_file_name) {
     }
     printf("\nLine 38\n");
 
-    //write the string 'ongoing_string' to a file with 'am' extension
-    // new string that starts with 'source_file_name' and ends with 'am' extension
-    char *new_string = malloc(sizeof(char) * 1000);
+    /* write the string 'ongoing_string' to a file with 'am' extension */
+    /* new string that starts with 'source_file_name' and ends with 'am' extension */
     strcpy(new_string, source_file_name);
     strcat(new_string, ".am");
     printf("\nLine 39\n");
@@ -46,12 +47,8 @@ char *span_macros(char *string, char *source_file_name) {
     write_file(new_string, ongoing_string);
     printf("\nLine 40\n");
 
-
     printf("\n\n\n\n\nfinal result:\n\n%s", ongoing_string);
     printf("\nLine 41\n");
-
-
-    //
 
     return ongoing_string;
 }
