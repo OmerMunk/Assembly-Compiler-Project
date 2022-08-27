@@ -8,6 +8,8 @@ char *span_macros(char *string, char *source_file_name) {
 /*    char* file_string2 = read_file("../text4.txt"); */
 /*    char *file_string = read_file("../source_code2.txt"); */
     int k;
+    int j;
+    int i;
     int count;
     char *result = NULL;
     char *ongoing_string = NULL;
