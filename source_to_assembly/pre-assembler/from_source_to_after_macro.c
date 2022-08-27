@@ -8,6 +8,9 @@ char *span_macros(char *string, char *source_file_name) {
 /*    char* file_string2 = read_file("../text4.txt"); */
 /*    char *file_string = read_file("../source_code2.txt"); */
     int k;
+    int count;
+    char *result = NULL;
+    char *ongoing_string = NULL;
     /* new string that starts with 'source_file_name' and ends with 'am' extension */
     char *new_string = malloc(sizeof(char) * 1000);
     printf("char *string represents content, hence: %s.\n char * source_file_name represents file name, hence %s",string,source_file_name);
@@ -20,13 +23,13 @@ char *span_macros(char *string, char *source_file_name) {
         next_position = is_macro(file_string, macro_struct_ptr[i].name, macro_struct_ptr[i].body, next_position);
         i++;
     }
-    char *result = (get_string_without_macros(file_string));
+    *result = (char *)(get_string_without_macros(file_string));
     printf("\n\n\nThe Result is:\n\n%s", result);
-    char *ongoing_string = result;
+    *ongoing_string = result;
     printf("%s", macro_struct_ptr[0].name);
     ongoing_string = replace_macro(result, macro_struct_ptr[0].name, macro_struct_ptr[0].body);
     j = 1;
-    int count = 0;
+    count = 0;
     while (j < i) {
         count = count_macro(ongoing_string, macro_struct_ptr[j].name);
         k = 0;
