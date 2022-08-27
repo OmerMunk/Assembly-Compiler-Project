@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 char *span_macros(char *string, char *source_file_name) {
@@ -13,8 +14,9 @@ char *span_macros(char *string, char *source_file_name) {
     int count;
     char *result = NULL;
     char *ongoing_string = NULL;
+    char *new_string = NULL;
     /* new string that starts with 'source_file_name' and ends with 'am' extension */
-    char *new_string = malloc(sizeof(char) * 1000);
+    *new_string = malloc(sizeof(char) * 1000);
     printf("char *string represents content, hence: %s.\n char * source_file_name represents file name, hence %s",string,source_file_name);
     char *file_string = string;
     printf("\nThe File String is:\n\n%s", file_string);
